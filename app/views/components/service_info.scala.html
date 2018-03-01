@@ -18,6 +18,18 @@
 
 @()(implicit request: Request[_], lang: Lang, messages: Messages)
 
+
+    <nav class="beta-banner">
+       <ul class="breadcrumb-nav__list">
+           <li class="breadcrumb-nav__item">@Messages("header.links.home")</li>
+           <span class="float--right">
+               <li class="breadcrumb-nav__item breadcrumb-nav__item--trail-pipe"><i>BA NAME</i></li>
+               <li class="breadcrumb-nav__item"><a href="@routes.LoginController.onPageLoad(NormalMode)">@Messages("header.links.logout")</a></li>
+            </span>
+       </ul>
+    </nav>
+
+<!--
     <div class="header-context toolbar" id="global-breadcrumb">
         <nav role="navigation">
             <ol class="group-right">
@@ -41,4 +53,6 @@
 
             </ol>
         </nav>
+
     </div>
+    -->

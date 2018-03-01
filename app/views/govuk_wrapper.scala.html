@@ -23,7 +23,8 @@
   contentHeader: Option[Html] = None,
   mainContent: Html = HtmlFormat.empty,
   serviceInfoContent: Html = HtmlFormat.empty,
-  scriptElem: Option[Html] = None)(implicit request: Request[_], messages: Messages)
+  scriptElem: Option[Html] = None,
+  subContentHeader: Boolean = false)(implicit request: Request[_], messages: Messages)
 
 @import layouts.{govuk_template => hmrcGovUkTemplate}
 @import uk.gov.hmrc.play.views.html.{layouts => uiLayouts}
@@ -72,12 +73,18 @@
         @views.html.language_selection(
             appConfig.languageMap,
             appConfig.routeToSwitchLanguage,
-            Some("translate u-align--right"))
+            Some("beta-banner translate u-align--right"))
+
     }
 
     @if(contentHeader.isDefined) {
         @uiLayouts.main_content_header(contentHeader = contentHeader.get)
     }
+
+    @if(subContentHeader){
+        @components.service_info()
+    }
+
 }
 
 @getHelpForm = @{uiHelpers.reportAProblemLink(appConfig.reportAProblemPartialUrl, appConfig.reportAProblemNonJSUrl)}

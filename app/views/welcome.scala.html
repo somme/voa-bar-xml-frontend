@@ -16,14 +16,18 @@
 
 @import config.FrontendAppConfig
 
+
+
 @(appConfig: FrontendAppConfig)(implicit request: Request[_], messages: Messages)
 
 @main_template(
     title = messages("welcome.title"),
     appConfig = appConfig,
-    bodyClasses = None) {
+    bodyClasses = None,
+    subContentHeader = true
+    ) {
 
-    @components.service_info()
+
 
     @components.heading("welcome.heading")
 
